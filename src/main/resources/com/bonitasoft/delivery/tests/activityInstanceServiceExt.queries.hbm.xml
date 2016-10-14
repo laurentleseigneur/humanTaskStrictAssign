@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="false">
+    <query name="updateAssigneeId">
+        UPDATE
+        org.bonitasoft.engine.core.process.instance.model.impl.SHumanTaskInstanceImpl
+        SET assigneeId = :assigneeId,
+        claimedDate = :claimedDate
+        WHERE id = :flowNodeInstanceId
+        AND (:assigneeId = 0 OR assigneeId = 0 OR :assigneeId = assigneeId)
+    </query>
+</hibernate-mapping>
