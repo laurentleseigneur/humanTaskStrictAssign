@@ -1,4 +1,4 @@
-package com.bonitasoft.delivery.tests;
+package org.bonitasoft.engine.service.extension;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +33,14 @@ public class ActivityInstanceServiceExtImpl extends ActivityInstanceServiceImpl 
     private static final String HUMAN_TASK_INSTANCE_ASSIGNEE = "updateAssigneeId";
 
     public ActivityInstanceServiceExtImpl(Recorder recorder, PersistenceService persistenceService, ArchiveService archiveService,
-                                          DataInstanceService dataInstanceService, ConnectorInstanceService connectorInstanceService, EventService eventService,
-                                          TechnicalLoggerService logger) {
+            DataInstanceService dataInstanceService, ConnectorInstanceService connectorInstanceService, EventService eventService,
+            TechnicalLoggerService logger) {
         super(recorder, persistenceService, archiveService, dataInstanceService, connectorInstanceService, eventService, logger);
     }
 
     /**
-     * <p>Use a more restrictive mechanism than default one in {@link org.bonitasoft.engine.core.process.instance.impl.ActivityInstanceServiceImpl} to assign human task:
+     * <p>Use a more restrictive mechanism than default one in {@link org.bonitasoft.engine.core.process.instance.impl.ActivityInstanceServiceImpl} to assign
+     * human task:
      * <ul>
      * <li>exception when task is already assign to a different user</li>
      * <li>only update claimed date when assign to same user</li>
@@ -47,7 +48,8 @@ public class ActivityInstanceServiceExtImpl extends ActivityInstanceServiceImpl 
      * </ul>
      * </p>
      * <p>
-     * <p>under hight load, getting pending tasks could return tasks that are being assign in a previous transaction in a separate thread, and thus assignee is override </p>
+     * <p>under high load, getting pending tasks could return tasks that are being assign in a previous transaction in a separate thread, and thus assignee is
+     * override </p>
      *
      * @param userTaskId
      * @param userId
